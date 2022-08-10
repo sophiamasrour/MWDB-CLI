@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+
+import sys
+from mwdblib import MWDB
+
+def last_two_karton(hash: str):
+    mwdb = MWDB(api_key = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJsb2dpbiI6InNvcGhpYSIsImFwaV9rZXlfaWQiOiIwOTA4MzI2MS00NDhmLTQwOWItYjc5MS1hNDhjODBmYjZiYmIiLCJpYXQiOjE2NTc3Mjg4NDIsImF1ZCI6Imh0dHA6Ly8wLjAuMC4wOjUwMDAiLCJzY29wZSI6ImFwaV9rZXkiLCJzdWIiOiJzb3BoaWEifQ.HsmGFocjW-wVOWGXMngzIoY5pzfNP4DBFebfu_i7a4vewFtHOG7CeboLNrrjNqBecJlUg3yGOEMTx8bDu3NxkQ', api_url = 'https://mwdb-development.labs:5000/api/', verify_ssl = False)
+    file = mwdb.query_file(hash)
+
+    try:
+        karton_id_0 = file.metakeys["karton"][0]
+        karton_id_1 = file.metakeys["karton"][1]
+    except IndexError:
+        raise
+
+    return karton_id_0, karton_id_1
+
+def compare_bsu(karton1: str, karton2: str):
+    mwdb = MWDB(api_key = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJsb2dpbiI6InNvcGhpYSIsImFwaV9rZXlfaWQiOiIwOTA4MzI2MS00NDhmLTQwOWItYjc5MS1hNDhjODBmYjZiYmIiLCJpYXQiOjE2NTc3Mjg4NDIsImF1ZCI6Imh0dHA6Ly8wLjAuMC4wOjUwMDAiLCJzY29wZSI6ImFwaV9rZXkiLCJzdWIiOiJzb3BoaWEifQ.HsmGFocjW-wVOWGXMngzIoY5pzfNP4DBFebfu_i7a4vewFtHOG7CeboLNrrjNqBecJlUg3yGOEMTx8bDu3NxkQ', api_url = 'https://mwdb-development.labs:5000/api/', verify_ssl = False)
+    
+    return
+
+def compare_capa(karton1: str, karton2: str):
+    mwdb = MWDB(api_key = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJsb2dpbiI6InNvcGhpYSIsImFwaV9rZXlfaWQiOiIwOTA4MzI2MS00NDhmLTQwOWItYjc5MS1hNDhjODBmYjZiYmIiLCJpYXQiOjE2NTc3Mjg4NDIsImF1ZCI6Imh0dHA6Ly8wLjAuMC4wOjUwMDAiLCJzY29wZSI6ImFwaV9rZXkiLCJzdWIiOiJzb3BoaWEifQ.HsmGFocjW-wVOWGXMngzIoY5pzfNP4DBFebfu_i7a4vewFtHOG7CeboLNrrjNqBecJlUg3yGOEMTx8bDu3NxkQ', api_url = 'https://mwdb-development.labs:5000/api/', verify_ssl = False)
+    return
+    
+
+
+
+
+if __name__ == '__main__':
+    if len(sys.argv) != 3:
+        sys.exit(f'usage: {sys.argv[0]} <b or c> <hash>')
+    
+    karton1, karton2 = last_two_karton(sys.arv[2])
+
+    for attribute in karton1.attributes:
+        print(attribute)
+ 
+    '''if sys.argv[1] == 'b':
+        print(compare_bsu(karton1, karton2))
+    elif sys.argv[1] == 'c':
+        print(compare_capa(karton1, karton2))
+   '''
+
